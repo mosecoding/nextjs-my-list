@@ -1,6 +1,7 @@
 import CreateListButton from "@/components/create-list-button";
 import Lists from "@/components/lists";
-import React from "react";
+import { Loader2Icon } from "lucide-react";
+import React, { Suspense } from "react";
 
 export default function ListsPage() {
   return (
@@ -13,7 +14,15 @@ export default function ListsPage() {
           <CreateListButton />
         </div>
       </div>
-      <Lists />
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center">
+            <Loader2Icon className="animate-spin size-20" />
+          </div>
+        }
+      >
+        <Lists />
+      </Suspense>
     </section>
   );
 }
